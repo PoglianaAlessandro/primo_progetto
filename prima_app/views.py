@@ -1,19 +1,30 @@
+  
 from django.shortcuts import render
 from django.http import HttpResponse
+
 # Create your views here.
 
+
 def homepage(request):
-    return HttpResponse("<h1>Ciao a tutti! Benvenuti nella homepage!</h1>")
+    return render(request, "homepage.html")
+
 
 def menu(request):
-    return HttpResponse("<ol><li>Prima opzione</li><li>Seconda opzione</li><li>Terza opzione</li></ol>")
+    return render(request, "menu.html")
+
 
 def chisiamo(request):
-    return render(request, "chi_siamo.html")
+    return render(request, "chi-siamo.html")
+
 
 def variabili(request):
-    context= { 'var1': '10','var2': 'ciao', 'var3' : '123 hello world'}
-    return render(request, "variabili.html",context)
+    context = {
+        "var1": "Variabile numero 1",
+        "var2": "Variabile numero 2",
+        "var3": "Variabile numero 3",
+    }
+    return render(request, "variabili.html", context)
+
 
 def index(request):
     return render(request, "index.html")
